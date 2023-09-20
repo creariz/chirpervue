@@ -1,0 +1,1 @@
+- se agrega carpeta assets y se agrega archivo de seguimiento de cambios
