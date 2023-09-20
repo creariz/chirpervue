@@ -1,3 +1,13 @@
+# Laravel 10 folders
+
+vendor
+node_modules
+public/build/assets/*.js
+public/build/assets/*.css
+
+/.fleet
+/.idea
+/.vscode
 /.phpunit.cache
 /node_modules
 /public/build
@@ -5,15 +15,22 @@
 /public/storage
 /storage/*.key
 /vendor
+vscode
+
+# Laravel 10 Files
+
 .env
+.env.example
 .env.backup
 .env.production
 .phpunit.result.cache
+.vagrant
+
 Homestead.json
 Homestead.yaml
 auth.json
+
+# Logs
+
 npm-debug.log
 yarn-error.log
-/.fleet
-/.idea
-/.vscode
