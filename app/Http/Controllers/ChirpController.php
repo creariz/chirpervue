@@ -33,6 +33,8 @@ class ChirpController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Authorize the request. The incoming request is valid...
+
         // Validate the request
         $validated = $request->validate([
             'message' => 'required|string|max:255',
@@ -64,9 +66,21 @@ class ChirpController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chirp $chirp)
+    public function update(Request $request, Chirp $chirp): RedirectResponse
     {
-        //
+        // Authorize the request
+        $this->authorize('update', $chirp);
+
+        // Validate the request
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        // Update the chirp
+        $chirp->update($validated);
+
+        // Redirect back to the index page
+        return redirect(route('chirps.index'));
     }
 
     /**
