@@ -1,15 +1,17 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Chirp from '@/Components/Chirp.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { useForm, Head } from '@inertiajs/vue3';
 
-defineProps(['chirps']);
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+    import Chirp from '@/Components/Chirp.vue';
+    import InputError from '@/Components/InputError.vue';
+    import PrimaryButton from '@/Components/PrimaryButton.vue';
+    import { useForm, Head } from '@inertiajs/vue3';
 
-const form = useForm({
-    message: '',
-});
+    defineProps(['chirps']);
+
+    const form = useForm({
+        message: '',
+    });
+
 </script>
 
 <template>

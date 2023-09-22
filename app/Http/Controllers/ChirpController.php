@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\ChirpRequest;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,14 +32,13 @@ class ChirpController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    //public function store(Request $request): RedirectResponse
+    public function store(ChirpRequest $request): RedirectResponse
     {
-        // Authorize the request. The incoming request is valid...
+        // Authorize the request. The incoming request is validated before this method is called.
 
-        // Validate the request
-        $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+        // Rertieve the validated input data
+        $validated = $request->validated();
 
         // Create a new chirp for the authenticated user
         $request->user()->chirps()->create($validated);
@@ -66,15 +66,13 @@ class ChirpController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chirp $chirp): RedirectResponse
+    public function update(ChirpRequest $request, Chirp $chirp): RedirectResponse
     {
         // Authorize the request
         $this->authorize('update', $chirp);
 
-        // Validate the request
-        $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+        // Rertieve the validated input data
+        $validated = $request->validated();
 
         // Update the chirp
         $chirp->update($validated);
